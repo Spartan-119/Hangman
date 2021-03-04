@@ -32,7 +32,7 @@ def Play(word):
             
             if guess in guessed_letters:
                 print("You already guessed this letter: ", guess)
-            elif guess not in guessed_letters:
+            elif guess not in word:
                 print(guess, " is NOT in the word!")
                 tries_left -= 1
                 guessed_letters.append(guess)
@@ -42,19 +42,20 @@ def Play(word):
                 
                 # Now here we will display all the occurances of the correct
                 # letter in the word
-                word_as_list = list(completed_word)
-                index = []
+                word_as_list = list(word)
+                indices = []
                 
-                count = -1
-                for i in word:
-                    count += 1
+                for i in word_as_list:
+                    
                     if i == guess:
-                         index.append(count)
+                         indices.append(word_as_list.index(i))
+                 
+                # replacing all the _ with the correctly guessed letter
+                completed_word_as_list = list(completed_word)
+                for i in indices:
+                    completed_word_as_list[i] = guess
                 
-                for i in index:
-                    word_as_list[i] = guess
-                
-                completed_word = "".join(word_as_list)
+                completed_word = "".join(completed_word_as_list)
                 
                 guessed = True # to exit the loop
         
