@@ -6,7 +6,7 @@ import word_list
 
 
 def get_word():
-    word = "Amandeep"#random.choice(word_list)
+    word = "Sheldon"#random.choice(word_list)
     word = word.upper()
     return word
 
@@ -46,8 +46,6 @@ def Play(word):
                 # Now here we will display all the occurances of the correct
                 # letter in the word
                 word_as_list = list(word)
-                
-                print(word_as_list)
                 
                 indices = []
                 
