@@ -1,9 +1,12 @@
 # Program to create a simple Hangman game
 import random
+import sys
+sys.path.append("C:/Users/abin.varghese01/Documents/Data Structures & Algorithms/word_list.py")
 import word_list
 
+
 def get_word():
-    word = "Aman" #random.choice(word_list)
+    word = "Amandeep"#random.choice(word_list)
     word = word.upper()
     return word
 
@@ -43,12 +46,14 @@ def Play(word):
                 # Now here we will display all the occurances of the correct
                 # letter in the word
                 word_as_list = list(word)
+                
+                print(word_as_list)
+                
                 indices = []
                 
-                for i in word_as_list:
-                    
-                    if i == guess:
-                         indices.append(word_as_list.index(i))
+                for i in range(len(word_as_list)):
+                    if word_as_list[i] == guess:
+                         indices.append(i)
                  
                 # replacing all the _ with the correctly guessed letter
                 completed_word_as_list = list(completed_word)
@@ -57,7 +62,8 @@ def Play(word):
                 
                 completed_word = "".join(completed_word_as_list)
                 
-                guessed = True # to exit the loop
+                if completed_word == word:
+                    guessed = True # to exit the loop
         
         elif len(guess) == len(word) and guess.isalpha():
             if guess in guessed_words:
@@ -81,6 +87,7 @@ def Play(word):
         print("Congratulations, you win!!!")
     else:
         print("Sorry, you ran out of attempts. The word was ", word, ". Better luck next time :)")
+    
         
 
 
@@ -170,3 +177,4 @@ def main():
         
 if __name__ == "__main__":
     main()
+    
